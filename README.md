@@ -3,10 +3,10 @@
 You can pronouce BSQ-ViT like "biskvit" (a kind of [Russian sponge cake](https://natashaskitchen.com/biskvit-russian-cake-recipe/)) or simply "biscuit".
 
 
-[**Image and Video Tokenization with Binary Spherical Quantization**](http://arxiv.org/abs/2406.xxxxx)  
+[**Image and Video Tokenization with Binary Spherical Quantization**](http://arxiv.org/abs/2406.07548)  
 Yue Zhao<sup>1</sup>, Yuanjun Xiong<sup>2</sup>, Philipp Kr&auml;henb&uuml;hl<sup>1</sup>  
 <sup>1</sup> UT Austin, <sup>2</sup>Predera  
-[arxiv](http://arxiv.org/abs/2406.xxxxx) | [bibtex](#citing-bsq-vit) 
+[arxiv](http://arxiv.org/abs/2406.07548) | [bibtex](#citing-bsq-vit) 
 
 <img src="./assets/bsqvit.png" width="640">
 
@@ -75,7 +75,7 @@ mamba activate bsqvit
 @article{zhao2024bsqvit,
   title={Image and Video Tokenization with Binary Spherical Quantization},
   author={Zhao, Yue and Xiong, Yuanjun, and Kr{\"a}henb{\"u}hl, Philipp},
-  journal={arXiv preprint arXiv:2406.xxxxx},
+  journal={arXiv preprint arXiv:2406.07548},
   year={2024}
 }
 ```
