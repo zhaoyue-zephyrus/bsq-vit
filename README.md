@@ -36,7 +36,7 @@ mamba activate bsqvit
 | BSQ-ViT (EMA)                                           |       &check;        |  36   |      28.14       |      .8448       |       .0400       |      0.45        | [UTBox](https://utexas.box.com/s/a7w3lw5q4dzxun3ai9uthhc3y8ade0pw) | b5ce5f |
 
 <img src="./assets/coco_recon_256x256.png" width="640">
-
+<img src="./assets/coco_recon_256x256_sample2.png" width="640">
 
 ### Video Reconstruction (UCF-101 16x128x128)
 
