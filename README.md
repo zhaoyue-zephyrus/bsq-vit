@@ -49,7 +49,7 @@ mamba activate bsqvit
 | BSQ-bcViT         |  36   |      33.80       |      .9606       |       .0159       |      4.10        |   [TBA]()     |
 
 
-### Image Synthesis (IN1K 128x128)
+### Image Synthesis (IN-1K 128x128)
 
 |                          | FID<sub>↓</sub> | IS<sub>↑</sub> | Prec<sub>↑</sub> | Rec<sub>↑</sub> | pre-computed samples                                                          | config & ckpt | 
 | ------------------------ | --------------- | -------------- | ---------------- | --------------- | ----------------------------------------------------------------------------- | ------------- |
@@ -60,7 +60,7 @@ mamba activate bsqvit
 <img src="./assets/imagenet_gen_128x128.png" width="640">
 
 
-### Video Compression
+### Video Compression (MCL-JCV 360P)
 
 <img src="./assets/mcljcv_msssim.png" width="320">
 
