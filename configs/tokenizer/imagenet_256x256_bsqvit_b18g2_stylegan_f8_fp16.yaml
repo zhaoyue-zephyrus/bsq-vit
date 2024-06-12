@@ -1,0 +1,80 @@
+model:
+  target: transcoder.models.bsqvit.VITBSQModel
+  params:
+    embed_dim: 18
+    embed_group_size: 9
+    l2_norm: True
+    persample_entropy_compute: 'analytical'
+    post_q_l2_norm: True
+    logit_laplace: False
+    beta: 0.
+    vitconfig:
+      image_size: 256
+      patch_size: 8
+      width: 768
+      layers: 12
+      heads: 12
+      mlp_ratio: 4
+      drop_rate: 0.
+  # grad_checkpointing: True
+loss:
+  target: transcoder.losses.vqperceptual.VQLPIPSWithDiscriminator
+  params:
+    disc_type: 'stylegan'
+    disc_input_size: 256
+    disc_loss: 'vanilla'
+    disc_reg_freq: 16
+    disc_conditional: False
+    disc_in_channels: 3
+    disc_start: 0
+    disc_weight: 0.1
+    codebook_weight: 0.1
+    codebook_rampup_multiplier: 3.0
+    codebook_rampup_steps: 2_000
+    perceptual_weight: 0.1
+    use_adaptive_disc_weight: False
+
+data:
+  image_size: 256
+  batch_size: 32
+  num_workers: 8
+  train:
+    target: torchvision.datasets.ImageFolder
+    params:
+      root: '/storage/Datasets/ILSVRC2012/train'
+  val:
+    target: torchvision.datasets.ImageFolder
+    params:
+      root: '/storage/Datasets/ILSVRC2012/val'
+        # root: '/storage/Datasets/ILSVRC2012/coco/'   # for coco2017val
+  zero_mean: True
+
+optimizer:
+  disable_amp: False
+  use_bf16: True
+  base_lr: 4e-7
+  max_iter: 1_000_000
+  lr_scheduler_config:
+      target: transcoder.optim.schedulers.LambdaWarmUpCosineScheduler
+      params:
+        warm_up_steps: 5_000
+        max_decay_steps: 1_000_000
+        lr_start: 0.1
+        lr_max: 1.0
+        lr_min: 0.5
+  target: torch.optim.AdamW
+  params:
+    weight_decay: 1e-4
+    betas: [0.9, 0.99]
+    eps: 1e-8
+evaluation:
+  interpolation: 'lanczos'
+  fid:
+    dims: 2048
+    num_samples: 50_000
+    # num_samples: 5_000   # for coco2017val
+    groundtruth_npz: 'imagenet_val_256x256_lanczos.npz'
+    # groundtruth_npz: 'coco_val_256x256_lanczos.npz'   # for coco2017val
+wandb:
+  project: transcoder
+  run: imagenet_128x128_bsqvit_b18g18_stylegan_f8_fp16

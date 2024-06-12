@@ -1,0 +1,23 @@
+name: bsqvit
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+  - nvidia
+dependencies:
+  - pytorch=2.2.0
+  - torchvision=0.17.0
+  - pytorch-cuda=12.1
+  - ninja=1.11.1
+  - scipy=1.12.0
+  - pip=23.3.1
+  - pip:
+    - omegaconf==2.3.0
+    - submitit==1.5.1
+    - timm==0.9.12
+    - wandb==0.16.2
+    - einops==0.7.0
+    - pytorch-msssim
+    - lpips
+    - imageio==2.34.0
+    - moviepy==1.0.3
