@@ -585,8 +585,9 @@ def evaluate(data_loader, model, args, config, full_eval=False):
 
     # cb usage
     if all_codes is not None:
-        usage_rate = all_codes.size(0) / (2 ** config.model.params.embed_dim)
-        print(f"Codebook usage: {all_codes.size(0)} / {2 ** config.model.params.embed_dim} ({usage_rate * 100:.02f}%)")
+        codebook_size = dist_utils.get_model(model).codebook_size
+        usage_rate = all_codes.size(0) / codebook_size
+        print(f"Codebook usage: {all_codes.size(0)} / {codebook_size} ({usage_rate * 100:.02f}%)")
         ret['usage-rate'] =  usage_rate
 
     return ret

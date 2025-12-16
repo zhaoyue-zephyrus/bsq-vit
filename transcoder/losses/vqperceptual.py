@@ -51,6 +51,7 @@ class VQLPIPSWithDiscriminator(nn.Module):
     def __init__(self, disc_start, codebook_weight=1.0, pixelloss_weight=1.0,
                  disc_type='patchgan',
                  disc_input_size=256,
+                 disc_channel_base=32768,
                  disc_num_layers=3, disc_in_channels=3, disc_factor=1.0, disc_weight=1.0,
                  disc_reg_freq=0, disc_reg_r1=10,
                  reconstruct_weight=1.0,
@@ -91,6 +92,7 @@ class VQLPIPSWithDiscriminator(nn.Module):
         elif disc_type.lower() == 'stylegan':
             self.discriminator = StyleGANDiscriminator(
                 0, disc_input_size, disc_in_channels,
+                channel_base=disc_channel_base,
                 num_fp16_res=8 if use_bf16 else 0,    # 8 is sufficiently large to cover all res
                 epilogue_kwargs={'mbstd_group_size': 4},
             )

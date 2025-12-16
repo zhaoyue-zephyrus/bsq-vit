@@ -1,12 +1,25 @@
-# 🍰 BSQ-ViT
+# Non-Parametric Quantization
+
+I wrote a [blog](https://ai.stanford.edu/~yzz/blog/articles/npq.html) about the motivation behind this series of work.
+
+## Λ24-SQ-ViT
+
+<img src="./assets/npq.png" width="640">
+
+[**Spherical Leech Quantization for Visual Tokenization and Generation**](http://arxiv.org/abs/2512.xxxxx)  
+Yue Zhao<sup>1,2</sup>, Hanwen Jiang<sup>1,3</sup>, Zhenlin Xu<sup>4</sup>, Chutong Yang<sup>1</sup>, Ehsan Adeli<sup>2</sup>, Philipp Kr&auml;henb&uuml;hl<sup>1</sup>  
+<sup>1</sup>UT Austin, <sup>2</sup>Stanford University, <sup>3</sup>Adobe Research, <sup>4</sup>Mistral AI  
+[arxiv](http://arxiv.org/abs/2512.xxxxx) | [bibtex](#citing-npq-vit) | [Image Generation with Infinity+L24SQ](http)
+
+## 🍰 BSQ-ViT
 
 You can pronouce BSQ-ViT like "biskvit" (a kind of [Russian sponge cake](https://natashaskitchen.com/biskvit-russian-cake-recipe/)) or simply "biscuit".
 
 
 [**Image and Video Tokenization with Binary Spherical Quantization**](http://arxiv.org/abs/2406.07548)  
 Yue Zhao<sup>1</sup>, Yuanjun Xiong<sup>2</sup>, Philipp Kr&auml;henb&uuml;hl<sup>1</sup>  
-<sup>1</sup> UT Austin, <sup>2</sup>Predera  
-[arxiv](http://arxiv.org/abs/2406.07548) | [bibtex](#citing-bsq-vit) 
+<sup>1</sup>UT Austin, <sup>2</sup>Predera  
+[arxiv](http://arxiv.org/abs/2406.07548) | [bibtex](#citing-npq-vit) 
 
 <img src="./assets/bsqvit.png" width="640">
 
@@ -70,7 +83,17 @@ mamba activate bsqvit
 [MIT License](./LICENSE).
 
 
-# Citing BSQ-ViT
+# Citing NPQ-ViT
+
+```bibtex
+@article{zhao2024lsqvit,
+  title={Spherical Leech Quantization for Visual Tokenization and Generation},
+  author={Zhao, Yue and Jiang, Hanwen and Xu, Zhenlin and Yang, Chutong and Adeli, Ehsan and Kr{\"a}henb{\"u}hl, Philipp},
+  journal={arXiv preprint arXiv:2512.xxxxx},
+  year={2025}
+}
+```
+
 ```bibtex
 @article{zhao2024bsqvit,
   title={Image and Video Tokenization with Binary Spherical Quantization},

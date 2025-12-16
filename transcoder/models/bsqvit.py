@@ -14,11 +14,15 @@ class VITVQModel(nn.Module):
                  grad_checkpointing=False, selective_checkpointing=False,
                  clamp_range=(0, 1),
                  dvitconfig=None,
+                 beta=0.25,
+                 predefined_codebook=None,
+                 freeze_codebook=False,
                  ):
         super().__init__()
         self.encoder = TransformerEncoder(**vitconfig)
         dvitconfig = vitconfig if dvitconfig is None else dvitconfig
         self.decoder = TransformerDecoder(**dvitconfig, logit_laplace=logit_laplace)
+        self.beta = beta
         if self.training and grad_checkpointing:
             self.encoder.set_grad_checkpointing(True, selective=selective_checkpointing)
             self.decoder.set_grad_checkpointing(True, selective=selective_checkpointing)
@@ -26,6 +30,9 @@ class VITVQModel(nn.Module):
         self.n_embed = n_embed
         self.embed_dim = embed_dim
         self.l2_norm = l2_norm
+        self.codebook_size = n_embed
+        self.predefined_codebook = predefined_codebook
+        self.freeze_codebook = freeze_codebook
         self.setup_quantizer()
         
         self.quant_embed = nn.Linear(in_features=vitconfig['width'], out_features=embed_dim)
@@ -40,7 +47,11 @@ class VITVQModel(nn.Module):
             self.init_from_ckpt(ckpt_path, ignore_keys=ignore_keys)
     
     def setup_quantizer(self):
-        self.quantize = VectorQuantizer(self.n_embed, self.embed_dim, l2_norm=self.l2_norm, beta=0.25, input_format='blc')
+        self.quantize = VectorQuantizer(
+            self.n_embed, self.embed_dim, l2_norm=self.l2_norm, beta=self.beta, input_format='blc',
+            predefined_codebook=self.predefined_codebook,
+            freeze_codebook=self.freeze_codebook,
+        )
 
     def init_from_ckpt(self, ckpt_path, ignore_keys=[]):
         try:
@@ -120,6 +131,7 @@ class VITBSQModel(VITVQModel):
         self.cb_entropy_compute = cb_entropy_compute
         self.post_q_l2_norm = post_q_l2_norm
         self.inv_temperature = inv_temperature
+        self.codebook_size = 2 ** embed_dim
         
         # call init
         super().__init__(

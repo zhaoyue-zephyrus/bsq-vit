@@ -7,7 +7,7 @@ import torch.nn.functional as F
 
 
 class VectorQuantizer(nn.Module):
-    def __init__(self, n_embed, embed_dim, l2_norm, beta, input_format='bchw'):
+    def __init__(self, n_embed, embed_dim, l2_norm, beta, input_format='bchw', predefined_codebook=None, freeze_codebook=False):
         super().__init__()
 
         self.n_embed = n_embed
@@ -20,6 +20,17 @@ class VectorQuantizer(nn.Module):
         self.embedding = nn.Embedding(n_embed, embed_dim)
         self.embedding.weight.data.uniform_(-1 / n_embed, 1 / n_embed)
         self.bits_per_index = int(np.ceil(np.log2(n_embed)))
+
+        if predefined_codebook is not None:
+            predefined_codebook = torch.from_numpy(np.load(predefined_codebook))
+            assert predefined_codebook.shape == (n_embed, embed_dim), 'Predefined codebook has incorrect shape'
+            self.embedding.weight.data.copy_(predefined_codebook)
+            if freeze_codebook:
+                print(f"Freezing codebook weights. {self.embedding.weight.shape=}")
+                self.embedding.weight.requires_grad = False
+            else:
+                print(f"Initializing the codebook from {predefined_codebook}, and the codebook is trainable.")
+                self.embedding.weight.requires_grad = True
 
     def forward(self, z):
         batch = z.shape[0]
@@ -40,7 +51,7 @@ class VectorQuantizer(nn.Module):
             used_codes = torch.unique(min_encoding_indices, return_counts=False)
         else:
             used_codes = None
-        cb_usage = F.one_hot(min_encoding_indices, self.n_embed).sum(0)
+        cb_usage = torch.bincount(min_encoding_indices.long(), minlength=self.n_embed).float()
         cb_entropy = self.get_entropy(cb_usage)
 
         z_q = self.embedding(min_encoding_indices).view(z.shape)
