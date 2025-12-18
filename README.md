@@ -9,7 +9,7 @@ I wrote a [blog](https://ai.stanford.edu/~yzz/blog/articles/npq.html) about the 
 [**Spherical Leech Quantization for Visual Tokenization and Generation**](http://arxiv.org/abs/2512.xxxxx)  
 Yue Zhao<sup>1,2</sup>, Hanwen Jiang<sup>1,3</sup>, Zhenlin Xu<sup>4</sup>, Chutong Yang<sup>1</sup>, Ehsan Adeli<sup>2</sup>, Philipp Kr&auml;henb&uuml;hl<sup>1</sup>  
 <sup>1</sup>UT Austin, <sup>2</sup>Stanford University, <sup>3</sup>Adobe Research, <sup>4</sup>Mistral AI  
-[arxiv](http://arxiv.org/abs/2512.14697) | [bibtex](#citing-npq-vit) | [Image Generation with Infinity+L24SQ](http)
+[arxiv](http://arxiv.org/abs/2512.14697) | [bibtex](#citing-npq-vit) | [Image Generation with Infinity+L24SQ](https://github.com/zhaoyue-zephyrus/InfinityCC)
 
 ## 🍰 BSQ-ViT
 
