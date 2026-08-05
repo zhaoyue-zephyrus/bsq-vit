@@ -6,7 +6,7 @@ I wrote a [blog](https://ai.stanford.edu/~yzz/blog/articles/npq.html) about the 
 
 <img src="./assets/npq.png" width="640">
 
-[**Spherical Leech Quantization for Visual Tokenization and Generation**](http://arxiv.org/abs/2512.xxxxx)  
+[**Spherical Leech Quantization for Visual Tokenization and Generation**](http://arxiv.org/abs/2512.14697)  
 Yue Zhao<sup>1,2</sup>, Hanwen Jiang<sup>1,3</sup>, Zhenlin Xu<sup>4</sup>, Chutong Yang<sup>1</sup>, Ehsan Adeli<sup>2</sup>, Philipp Kr&auml;henb&uuml;hl<sup>1</sup>  
 <sup>1</sup>UT Austin, <sup>2</sup>Stanford University, <sup>3</sup>Adobe Research, <sup>4</sup>Mistral AI  
 [arxiv](http://arxiv.org/abs/2512.14697) | [bibtex](#citing-npq-vit) | [Image Generation with Infinity+L24SQ](https://github.com/zhaoyue-zephyrus/InfinityCC)
@@ -47,6 +47,7 @@ mamba activate bsqvit
 | BSQ-ViT (EMA)                                           |       &check;        |  18   |      25.80       |      .7680       |       .0729       |      1.30        | [UTBox](https://utexas.box.com/s/nt9g741b1cu4nidygd3a3e26clpemr0n) | 8f5422 |
 | BSQ-ViT                                                 |       &check;        |  36   |      27.88       |      .8410       |       .0432       |      0.41        | [UTBox](https://utexas.box.com/s/a7w3lw5q4dzxun3ai9uthhc3y8ade0pw) | b5ce5f |
 | BSQ-ViT (EMA)                                           |       &check;        |  36   |      28.14       |      .8448       |       .0400       |      0.45        | [UTBox](https://utexas.box.com/s/a7w3lw5q4dzxun3ai9uthhc3y8ade0pw) | b5ce5f |
+| L24SQ-ViT (EMA)                                         |       N/A            | ~17.6 |                  |                  |                   |                  | [Gdrive](https://drive.google.com/drive/folders/1wxxSNhzyPpwOd5Arxa4ucjkxkNqZZ_3j?usp=sharing)  | 73ab9e | 
 
 <img src="./assets/coco_recon_256x256.png" width="640">
 <img src="./assets/coco_recon_256x256_sample2.png" width="640">
